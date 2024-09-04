@@ -1,0 +1,42 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Buy Now{% endblock title %}
+{% block main-content %}
+<div class="container my-5">
+    <div class="row">
+        {% if user.is_authenticated %}
+        <h3>Welcome, {{ user.username }}</h3>
+        {% endif %}
+        <div class="col-sm-2 border-end">
+            <ul class="list-unstyled">
+                <li class="d-grid"><a href="{% url 'profile' %}" class="btn btn-primary">Profile</a></li>
+                <li class="d-grid"><a href="{% url 'address' %}" class="btn">Address</a></li>
+            </ul>
+        </div>
+        
+        <div class="col-sm-9 offset-sm-1">
+            <div class="row">
+                {% if user.is_authenticated %}
+                {% for n in Userdata %}
+                {% if user.username == n.Name %}
+                <div class="col-sm-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 style="text-decoration: underline;">Address {{ n.id }}</h3><br>
+                        <strong><h5>Name : </strong>{{ n.Name }}</h5>
+                        <strong><p>Address 1: </strong> {{ n.Address }}</p>
+                        <strong><p>Address 2:</strong> {{ n.Adress1 }}</p>
+                        <strong><p>State:</strong> {{ n.State }}</p>
+                        <strong><p>Pin-Code: </strong>{{ n.Zip }}</p>
+                        </div>
+                    </div>
+                </div> 
+                {% endif %}
+                {% endfor %}  
+                {% endif %}
+            </div>
+        </div>
+        
+    </div>
+</div>
+{% endblock main-content %}

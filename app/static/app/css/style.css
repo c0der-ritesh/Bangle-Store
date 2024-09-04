@@ -1,0 +1,35 @@
+.owl-carousel .item{
+ /* border: 1px solid black; */
+ font-size: 24px;
+ text-align: center;
+ margin-top: 20px;;
+}
+
+.owl-next{
+ float:right;
+}
+.owl-prev{
+ float:left;
+}
+.owl-prev span{
+ font-size: 24px;
+ font-weight: bold;
+}
+.owl-next span{
+ font-size: 24px;
+ font-weight: bold;
+}
+.custom-div {
+    width: 200px;
+    height: 200px;
+    border: 2px solid #080808; /* Border color and thickness */
+    box-shadow: 5px 5px 10px #888888; /* Horizontal offset, vertical offset, blur radius, shadow color */
+}
+.nv ul li a:hover{
+text-decoration: underline;
+}
+
+
+
+
+

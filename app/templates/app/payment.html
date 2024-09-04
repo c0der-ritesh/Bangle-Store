@@ -1,0 +1,29 @@
+
+{% load static %}
+{% block title %}{% endblock title %}
+{% block main-content %}
+<link rel="stylesheet" href="{% static 'app/css/style2.css' %}">
+
+<div class="container">
+    <h1>Payment Gateway</h1>
+    <div class="wrapper">
+        <div>
+            <img src="{% static 'app/images/payment2.png' %}">
+            <img src="{% static 'app/images/QR.jpg' %}">
+        </div>
+        
+        <div style="cursor: pointer;">
+            <form class="payment-form" action="{% url 'home' %}">
+                <input type="name" name="" class="firstname" placeholder="Full name" required>
+                <input type="Upi Id" name="" class="upiid" placeholder="Upi ID" required><br>
+                <input style="cursor: pointer;" type="submit" name="" value="Pay" class="pay-btn" onclick="alert('Order Placed Successfully')">
+            </form>
+        </div>
+    </div>
+    <!-- <h4>100% Secured Payment</h4> -->
+</div>
+
+
+
+
+{% endblock main-content %}

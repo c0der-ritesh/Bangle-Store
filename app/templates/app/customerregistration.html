@@ -1,0 +1,47 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Customer Registration{% endblock title %}
+{% block main-content %}
+<div class="container">
+ <div class="row my-3">
+  <div class="col-sm-6 offset-sm-3">
+   <center><h3 style="text-decoration: underline;">Customer Registration</h3></center>
+   <hr>
+
+   <form action="" method="post" novalidate class="shadow p-5">
+      {% csrf_token %}
+      <div class="mb-3">
+         <label for="inputName" class="form-label">Name</label>
+         <input type="email" class="form-control" id="inputEmail4" name="name" required>
+        </div>
+    <div class="mb-3">
+     <label for="inputEmail" class="form-label">Email</label>
+     <input type="email" class="form-control" id="inputEmail4" name="email" required>
+     <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    </div>
+    <div class="mb-3">
+     <label for="inputPassword1" class="form-label">Password</label>
+     <input type="password" class="form-control" id="inputPassword1" name="password" required>
+    </div>
+    <div class="mb-3">
+     <label for="inputPassword2" class="form-label">Confirm Password</label>
+     <input type="password" class="form-control" id="inputPassword2" name="password1" required>
+    </div>
+    <div class="text-end">
+      <strong><p  style="font-size: 14px; color: red;">{{ error }}</p></strong>
+    <!--<button type="button" class="btn btn-danger">Submit</button>--> 
+    <input type="submit" class="btn btn-primary mt-4" value="Register">
+    </div>
+    <br>
+    <div class="text-center text-primary fw-bold"><small>Existing User ? <a href="{% url 'login' %}"
+       class="text-danger">Login Now</a> </small></div>
+    {% if form.non_field_errors %}
+    {% for error in form.non_field_errors %}
+    <p class="alert alert-danger my-3">{{error}}</p>
+    {% endfor %}
+    {% endif %}
+   </form>
+  </div>
+ </div>
+</div>
+{% endblock main-content %}

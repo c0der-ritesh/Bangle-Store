@@ -1,0 +1,70 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Buy Now{% endblock title %}
+{% block main-content %}
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-sm-6">
+      <h4>Order Summary</h4>
+      <hr>
+      <div class="card mb-2">
+        <div class="card-body">
+          <h5>Product: Bangles</h5>
+          <p>Quantity: {{ count }}</p>
+          <p class="fw-bold">Total-Price: {{ total_price }}</p>
+        </div>
+      </div>
+      <small style="font-size: small; font-family: Arial, Helvetica, sans-serif;"><strong>Term and Condition:</strong> <br>"By purchasing from our site, you agree to the terms: items may vary slightly,
+        returns within 30 days, responsible for import duties, and accurate shipping information required."</small>
+    </div>
+    <div class="col-sm-6 ">
+      <h4>Select Shipping Address</h4>
+      <hr>
+      {% for n in Userdata %}
+      <div class="card mb-3">
+        <form action="{% url 'payment' %}" method="post">
+          {% csrf_token %}
+          <div class="card">
+            <div class="card-body" style="font-size: 16px;">
+              <h5>Name: {{ n.Name }}</h5>
+              <strong>
+                <p>Address line 1 :
+              </strong>{{ n.Address }}</p>
+              <strong>
+                <p>Address line 2 :
+              </strong>{{ n.Adress1 }}</p>
+              <strong>
+                <p>City :
+              </strong>{{ n.City }}</p>
+              <strong>
+                <p>Pin-Code :
+              </strong>{{ n.Zip }}</p>
+              <strong>
+                <p>State :
+              </strong>{{ n.State }}</p>
+              <hr>
+              <strong>
+                <p>Date of Order :
+              </strong>{{ current_date }}</p>
+              <strong>
+                <p>Expected Shipping Date :
+              </strong>{{ new_date }}</p>
+              <strong>
+                <p>Date of Dilevery :
+              </strong>{{ new_date1 }}</p>
+            </div>
+          </div>
+          <div class="form-check mt-2 mb-1">
+            <input class="form-check-input" type="radio" value="">
+            <label class="form-check-label fw-bold" for="">
+              Address: 1 </label>
+          </div>
+          <div class="text-center">
+            <input type="submit" class="btn btn-warning mt-3 px-5 fw-bold" value="Continue">
+          </div>
+        </form>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endblock main-content %}
